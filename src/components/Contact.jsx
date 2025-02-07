@@ -1,5 +1,5 @@
-import React from 'react';
-import '../styles/Global.css';
+import React from "react";
+import "../styles/Global.css";
 
 function Contact() {
   return (
@@ -15,10 +15,12 @@ function Contact() {
           </div>
         </div>
         <div className="contact__information">
-          <i class="uil uil-comment-dots contact__icon" />
+          <i className="uil uil-comment-dots contact__icon" />
           <div>
             <h3 className="contact__title">Chat me</h3>
-            <span className="contact__subtitle">(at LinkedIn or Instagram)</span>
+            <span className="contact__subtitle">
+              (at LinkedIn or Instagram)
+            </span>
           </div>
         </div>
       </div>

@@ -1,56 +1,58 @@
-import React from 'react';
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Pagination } from 'swiper/modules';
-import Wildbeast from '../projects/Wildbeast';
-import TryBuy from '../projects/TryBuy';
-import MyWorldWallet from '../projects/MyWorldWallet';
-import FacebookPage from '../projects/FacebookPage';
-import GrandRecipe from '../projects/GrandRecipe';
-import PaintIt from '../projects/PaintIt';
-import 'swiper/css';
-import 'swiper/css/navigation';
-import 'swiper/css/pagination';
-import '../styles/Global.css';
+import React, { useEffect, useRef } from "react";
+import TryBuy from "../projects/TryBuy";
+import Wildbeast from "../projects/Wildbeast";
+import FacebookPage from "../projects/FacebookPage";
+import MyWorldWallet from "../projects/MyWorldWallet";
+import GrandRecipe from "../projects/GrandRecipe";
+import PaintIt from "../projects/PaintIt";
+import "../styles/Global.css";
 
 function Portfolio() {
+  const swiperRef = useRef(null);
+
+  useEffect(() => {
+    if (window.Swiper) {
+      new window.Swiper(swiperRef.current, {
+        cssMode: true,
+        slidesPerView: 1,
+        navigation: {
+          nextEl: ".swiper-button-next",
+          prevEl: ".swiper-button-prev",
+        },
+        pagination: { el: ".swiper-pagination", clickable: true },
+      });
+    }
+  }, []);
 
   return (
     <section className="portfolio section" id="portfolio">
       <h2 className="section__title">Portfolio</h2>
       <span className="section__subtitle">Most recent works</span>
-      <div className="portfolio__container container swiper-container">
-        <div className="swiper-wrapper">
-          <Swiper
-            modules={[Navigation, Pagination]}
-            cssMode={true}
-            navigation
-            pagination
-            className="mySwiper"
-          >
-            <SwiperSlide>
+      <div className="portfolio__container container">
+        <div className="swiper" ref={swiperRef}>
+          <div className="swiper-wrapper">
+            <div className="swiper-slide">
               <TryBuy />
-            </SwiperSlide>
-
-            <SwiperSlide>
+            </div>
+            <div className="swiper-slide">
               <Wildbeast />
-            </SwiperSlide>
-
-            <SwiperSlide>
+            </div>
+            <div className="swiper-slide">
               <FacebookPage />
-            </SwiperSlide>
-
-            <SwiperSlide>
+            </div>
+            <div className="swiper-slide">
               <MyWorldWallet />
-            </SwiperSlide>
-
-            <SwiperSlide>
+            </div>
+            <div className="swiper-slide">
               <GrandRecipe />
-            </SwiperSlide>
-
-            <SwiperSlide>
+            </div>
+            <div className="swiper-slide">
               <PaintIt />
-            </SwiperSlide>
-          </Swiper>
+            </div>
+          </div>
+          <div className="swiper-pagination"></div>
+          <div className="swiper-button-prev"></div>
+          <div className="swiper-button-next"></div>
         </div>
       </div>
     </section>
